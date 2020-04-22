@@ -17,18 +17,26 @@ interface Strategy {
 }
 
 interface StrategyDataState {
-    isLoaded: boolean;
-    rawJson: string
+    strategies: Array<Strategy>;
 }
 
 export class Hello extends React.Component<HelloProps, StrategyDataState> {
     constructor(props: HelloProps, state: StrategyDataState) {
         super(props, state);
-        this.state = state;
+        this.state = {strategies: []};
     }
 
     render() {
-        return <h1>Hello from {this.props.compiler} and {this.props.framework} and {this.state.rawJson} !</h1>;
+        return <h1>
+            {this.props.compiler} <br/>
+            {this.props.framework} <br/>
+            Strategies:
+            <ul>
+                {this.state.strategies.map(item => (
+                    <li key={item.name}>{item.name}</li>
+                ))}
+            </ul>
+        </h1>;
     }
 
     componentDidMount() {
@@ -37,12 +45,13 @@ export class Hello extends React.Component<HelloProps, StrategyDataState> {
                 return response.json();
             })
             .then((data) => {
-                let strategies: Array<Strategy> = data;
-                for (let strategy of strategies)
-                    console.log(strategy.name);
-                this.setState({isLoaded: true, rawJson: "yay"});
+                let strategyObjects: Array<Strategy> = new Array<Strategy>();
+                for (let strategy of data)
+                    strategyObjects.push(strategy);
+                this.setState({strategies: strategyObjects});
             }).catch((error) => {
-            this.setState({isLoaded: true, rawJson: error.toString()});
+            console.log(error);
+            //TODO do something later);
         });
     }
 }
