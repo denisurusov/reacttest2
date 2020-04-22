@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/reacttest2.iml" filepath="$PROJECT_DIR$/reacttest2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workplannerui.iml" filepath="$PROJECT_DIR$/workplannerui.iml" />
     </modules>
   </component>
 </project>
