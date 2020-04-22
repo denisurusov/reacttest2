@@ -7,7 +7,7 @@ export interface HelloProps {
 
 interface Strategy {
     _id: object;
-    strategyCode: string;
+    code: string;
     comment: string;
     impact: string;
     name: string;
@@ -32,9 +32,10 @@ export class Hello extends React.Component<HelloProps, StrategyDataState> {
             {this.props.framework} <br/>
             Strategies:
             <ul>
-                {this.state.strategies.map(item => (
-                    <li key={item.name}>{item.name}</li>
-                ))}
+                {this.state.strategies.map((item) => {
+                    return (<li value={item.code}>{item.name}</li>);
+                })
+                }
             </ul>
         </h1>;
     }
