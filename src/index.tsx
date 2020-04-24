@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import './index.css';
-import {Hello} from "./components/Hello";
+import './index.css';
+import {WPApp} from "./components/WPApp";
 
 import * as serviceWorker from './serviceWorker';
 
@@ -12,7 +12,7 @@ serviceWorker.unregister();
 
 ReactDOM.render(
     <React.StrictMode>
-        <Hello compiler="TypeScript" framework="React"/>
+        <WPApp compiler="TypeScript" framework="React"/>
     </React.StrictMode>,
     document.getElementById('helloDiv')
 );
