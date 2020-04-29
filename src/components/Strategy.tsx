@@ -9,7 +9,7 @@ import {blue, lime} from '@material-ui/core/colors';
 import {BadgeInfoCard} from './StrategyBadgeInfo';
 
 interface StrategyCardProps {
-    name: string,
+    key: string,
 }
 
 export interface Strategy {
@@ -35,10 +35,9 @@ export class StrategyCard extends React.Component<StrategyCardProps, StrategyDat
     }
 
     render() {
-        return <GridListTile>
+        return <GridListTile key={this.props.key}>
             <Card raised={true}>
                 <Box height={30}>
-
                     <CardHeader
                         avatar={
                             <Avatar aria-label="recipe" variant="rounded"

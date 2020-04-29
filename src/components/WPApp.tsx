@@ -3,7 +3,7 @@ import GridList from '@material-ui/core/GridList';
 import {StrategyCard} from "./Strategy";
 import Box from "@material-ui/core/Box";
 
-export interface HelloProps {
+export interface StrategyProps {
     compiler: string;
     framework: string;
 }
@@ -12,8 +12,8 @@ interface StrategyDataState {
     strategies: StrategyCard[];
 }
 
-export class WPApp extends React.Component<HelloProps, StrategyDataState> {
-    constructor(props: HelloProps, state: StrategyDataState) {
+export class WPApp extends React.Component<StrategyProps, StrategyDataState> {
+    constructor(props: StrategyProps, state: StrategyDataState) {
         super(props, state);
         this.state = {strategies: []};
     }
@@ -37,7 +37,7 @@ export class WPApp extends React.Component<HelloProps, StrategyDataState> {
             .then((data) => {
                 let strategyCards: Array<StrategyCard> = new Array<StrategyCard>();
                 for (let strategy of data) {
-                    strategyCards.push(new StrategyCard({name: ""}, {strategy}));
+                    strategyCards.push(new StrategyCard({key: strategy._id}, {strategy}));
                 }
                 this.setState({strategies: strategyCards});
             }).catch((error) => {
