@@ -20,7 +20,7 @@ export class WPApp extends React.Component<HelloProps, StrategyDataState> {
 
     render() {
         return <Box width={"95%"}>
-            <GridList cellHeight={400} spacing={10} cols={3}>
+            <GridList cellHeight={350} spacing={10} cols={3}>
                 {this.state.strategies.map((item) => {
                     return (item.render());
                 })
