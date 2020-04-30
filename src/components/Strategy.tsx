@@ -1,10 +1,5 @@
 import React from "react";
-import Box from '@material-ui/core/Box';
-import {Avatar, Card} from '@material-ui/core';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import GridListTile from '@material-ui/core/GridListTile';
-import Typography from '@material-ui/core/Typography';
+import {Avatar, Box, Card, CardContent, CardHeader, GridListTile, Typography} from '@material-ui/core';
 import {blue, lime} from '@material-ui/core/colors';
 import {BadgeInfoCard} from './StrategyBadgeInfo';
 

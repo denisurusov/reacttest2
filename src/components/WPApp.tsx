@@ -1,7 +1,6 @@
 import React from "react";
-import GridList from '@material-ui/core/GridList';
 import {StrategyCard} from "./Strategy";
-import Box from "@material-ui/core/Box";
+import {Box, GridList} from "@material-ui/core";
 
 export interface StrategyProps {
     compiler: string;
@@ -36,6 +35,7 @@ export class WPApp extends React.Component<StrategyProps, StrategyDataState> {
             })
             .then((data) => {
                 let strategyCards: Array<StrategyCard> = new Array<StrategyCard>();
+                //TODO should there be a cast into Strategy interface?
                 for (let strategy of data) {
                     strategyCards.push(new StrategyCard({key: strategy._id}, {strategy}));
                 }

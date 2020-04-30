@@ -1,7 +1,7 @@
 import React from 'react';
-import AddAlarm from "@material-ui/icons/AddAlarm";
+import {AddAlarm} from "@material-ui/icons";
 import {blue} from "@material-ui/core/colors";
-import Badge from "@material-ui/core/Badge";
+import {Badge, IconButton} from "@material-ui/core";
 
 interface BadgeDataState {
     count: number;
@@ -18,13 +18,19 @@ export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
         this.state = {count: 0};
     }
 
+    test() {
+        console.log("test");
+    }
+
     render() {
-        return <Badge badgeContent={this.state.count} showZero color="secondary" overlap="circle" anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-        }}>
-            <AddAlarm style={{color: blue[500], fontSize: 40}}/>
-        </Badge>
+        return <IconButton title={"see more"} onClick={this.test}>
+            <Badge badgeContent={this.state.count} showZero color="secondary" overlap="circle"
+                   anchorOrigin={{
+                       vertical: 'bottom',
+                       horizontal: 'right',
+                   }}>
+                <AddAlarm style={{color: blue[500], fontSize: 40}}/>
+            </Badge></IconButton>
     }
 
     componentDidMount() {
