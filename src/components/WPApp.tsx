@@ -1,5 +1,5 @@
 import React from "react";
-import {StrategyCard} from "./Strategy";
+import {StrategyCard} from "./strategy/Strategy";
 import {Box, GridList} from "@material-ui/core";
 
 export interface StrategyProps {

@@ -1,7 +1,7 @@
 import React from "react";
 import {Avatar, Box, Card, CardContent, CardHeader, GridListTile, Typography} from '@material-ui/core';
 import {blue, lime} from '@material-ui/core/colors';
-import {BadgeInfoCard} from './StrategyBadgeInfo';
+import {BadgeInfoCard} from './InfoBadge';
 
 interface StrategyCardProps {
     key: string,

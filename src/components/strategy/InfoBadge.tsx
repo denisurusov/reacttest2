@@ -1,4 +1,5 @@
 import React from 'react';
+import {DetailsDialog} from "./Details";
 import {AddAlarm} from "@material-ui/icons";
 import {blue} from "@material-ui/core/colors";
 import {Badge, IconButton} from "@material-ui/core";
@@ -13,24 +14,30 @@ interface BadgeProps {
 
 export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
 
+    dialogRef = React.createRef<DetailsDialog>();
+
     constructor(props: BadgeProps, state: BadgeDataState) {
         super(props, state);
         this.state = {count: 0};
+        this.showDialog = this.showDialog.bind(this);
     }
 
-    test() {
-        console.log("test");
+    showDialog() {
+        if (this.dialogRef.current)
+            this.dialogRef.current.setState({open: true});
     }
 
     render() {
-        return <IconButton title={"see more"} onClick={this.test}>
+        return <IconButton title={"see more"} onClick={this.showDialog}>
             <Badge badgeContent={this.state.count} showZero color="secondary" overlap="circle"
                    anchorOrigin={{
                        vertical: 'bottom',
                        horizontal: 'right',
                    }}>
                 <AddAlarm style={{color: blue[500], fontSize: 40}}/>
-            </Badge></IconButton>
+            </Badge>
+            <DetailsDialog ref={this.dialogRef} code={this.props.code}/>
+        </IconButton>
     }
 
     componentDidMount() {
