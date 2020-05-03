@@ -10,6 +10,7 @@ interface BadgeDataState {
 
 interface BadgeProps {
     code: string,
+    name: string
 }
 
 export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
@@ -39,7 +40,7 @@ export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
                    }}>
                 <AddAlarm style={{color: blue[500], fontSize: 40}}/>
             </Badge>
-            <DetailsDialog ref={this.dialogRef} key={'detailsDialog'} code={this.props.code}/>
+            <DetailsDialog ref={this.dialogRef} key={'detailsDialog'} code={this.props.code} name={this.props.name}/>
         </IconButton>
     }
 

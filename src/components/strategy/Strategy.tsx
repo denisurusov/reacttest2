@@ -40,7 +40,7 @@ export class StrategyCard extends React.Component<StrategyCardProps, StrategyDat
                                 {this.state.strategy.code.toUpperCase()}
                             </Avatar>
                         }
-                        action={<BadgeInfoCard code={this.state.strategy.code}/>}
+                        action={<BadgeInfoCard code={this.state.strategy.code} name={this.state.strategy.shortname}/>}
                         title={this.state.strategy.shortname.toUpperCase()}
                         subheader={this.state.strategy.name}
                     />

@@ -1,6 +1,9 @@
 import React from 'react';
 
-import {Dialog, DialogContent, DialogTitle, Typography} from '@material-ui/core';
+import {AppBar, Dialog, DialogContent, Toolbar, Typography} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import {blue} from "@material-ui/core/colors";
 
 interface DialogState {
     status: boolean;
@@ -8,6 +11,7 @@ interface DialogState {
 
 interface DialogProps {
     code: string,
+    name: string
 }
 
 export class DetailsDialog extends React.Component<DialogProps, DialogState> {
@@ -35,11 +39,17 @@ export class DetailsDialog extends React.Component<DialogProps, DialogState> {
     };
 
     render() {
-        return <Dialog aria-labelledby="customized-dialog-title" open={this.state.status}>
-            <DialogTitle disableTypography={true}
-                         style={{display: 'flow', justifyContent: 'right', alignItems: 'top'}}>
-                Strategy {this.props.code}
-            </DialogTitle>
+        return <Dialog aria-labelledby="customized-dialog-title" fullScreen open={this.state.status}>
+            <AppBar>
+                <Toolbar style={{fontSize: 24, background: blue [500]}}>
+                    <IconButton color="inherit" onClick={this.closeDialog} aria-label="Close">
+                        <CloseIcon/>
+                    </IconButton>
+                    <Typography variant="h6" color="inherit">
+                        Strategy: {this.props.name} ({this.props.code}) - detailed view
+                    </Typography>
+                </Toolbar>
+            </AppBar>
             <DialogContent dividers>
                 <Typography gutterBottom>
                     Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
@@ -49,7 +59,6 @@ export class DetailsDialog extends React.Component<DialogProps, DialogState> {
         </Dialog>
     }
 
-    //
     componentDidMount() {
         // fetch('/capabilities?strategyCode=' + this.props.code)
         //     .then((response) => {
