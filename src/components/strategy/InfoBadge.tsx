@@ -14,21 +14,24 @@ interface BadgeProps {
 
 export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
 
-    dialogRef = React.createRef<DetailsDialog>();
-
     constructor(props: BadgeProps, state: BadgeDataState) {
         super(props, state);
         this.state = {count: 0};
         this.showDialog = this.showDialog.bind(this);
     }
 
+    dialogRef = React.createRef<DetailsDialog>();
+
     showDialog() {
         if (this.dialogRef.current)
-            this.dialogRef.current.setState({open: true});
+            if (this.dialogRef.current.isOpen())
+                this.dialogRef.current.closeDialog();
+            else
+                this.dialogRef.current.openDialog();
     }
 
     render() {
-        return <IconButton title={"see more"} onClick={this.showDialog}>
+        return <IconButton title={"" + this.state.count} onClick={this.showDialog}>
             <Badge badgeContent={this.state.count} showZero color="secondary" overlap="circle"
                    anchorOrigin={{
                        vertical: 'bottom',
@@ -36,7 +39,7 @@ export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
                    }}>
                 <AddAlarm style={{color: blue[500], fontSize: 40}}/>
             </Badge>
-            <DetailsDialog ref={this.dialogRef} code={this.props.code}/>
+            <DetailsDialog ref={this.dialogRef} key={'detailsDialog'} code={this.props.code}/>
         </IconButton>
     }
 
