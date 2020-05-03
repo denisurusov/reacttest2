@@ -1,7 +1,6 @@
 import React from 'react';
 
-import {Dialog, DialogContent, DialogTitle, IconButton, Typography} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import {Dialog, DialogContent, DialogTitle, Typography} from '@material-ui/core';
 
 interface DialogState {
     status: boolean;
@@ -37,11 +36,9 @@ export class DetailsDialog extends React.Component<DialogProps, DialogState> {
 
     render() {
         return <Dialog aria-labelledby="customized-dialog-title" open={this.state.status}>
-            <DialogTitle>
+            <DialogTitle disableTypography={true}
+                         style={{display: 'flow', justifyContent: 'right', alignItems: 'top'}}>
                 Strategy {this.props.code}
-                <IconButton aria-label="close" onClick={this.closeDialog} style={{position: 'absolute'}}>
-                    <CloseIcon/>
-                </IconButton>
             </DialogTitle>
             <DialogContent dividers>
                 <Typography gutterBottom>
