@@ -25,9 +25,7 @@ export class BadgeInfoCard extends React.Component<BadgeProps, BadgeDataState> {
 
     showDialog() {
         if (this.dialogRef.current)
-            if (this.dialogRef.current.isOpen())
-                this.dialogRef.current.closeDialog();
-            else
+            if (!this.dialogRef.current.isOpen())
                 this.dialogRef.current.openDialog();
     }
 

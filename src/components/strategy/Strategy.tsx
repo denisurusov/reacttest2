@@ -2,20 +2,10 @@ import React from "react";
 import {Avatar, Box, Card, CardContent, CardHeader, GridListTile, Typography} from '@material-ui/core';
 import {blue, lime} from '@material-ui/core/colors';
 import {BadgeInfoCard} from './InfoBadge';
+import {Strategy} from "../../data/strategy";
 
 interface StrategyCardProps {
     key: string,
-}
-
-export interface Strategy {
-    _id: object;
-    code: string;
-    comment: string;
-    impact: string;
-    name: string;
-    problem: string;
-    shortname: string;
-    strategy: string;
 }
 
 interface StrategyDataState {
