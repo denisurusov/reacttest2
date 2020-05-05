@@ -83,9 +83,9 @@ export class DetailsDialog extends React.Component<DialogProps, DialogState> {
                 {this.state.capabilities?.map((item) => {
                     return <Card key={item._id.toString()} raised={true}
                                  style={{width: 'max-content', height: '200', overflow: 'auto'}}>
-                        <CardHeader
-                            title={item.name}
-                            subheader={'Capability to ' + item.capability}
+                        <CardHeader style={{background: blue [500], padding: '5', color: 'white'}}
+                                    title={item.name}
+                                    subheader={'Capability to ' + item.capability}
                         />
                         <CardContent style={{height: 'min-content', padding: '5'}}>
                             <Typography variant="h6" color="inherit">Tracks
