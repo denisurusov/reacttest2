@@ -2,20 +2,21 @@ import React from 'react';
 
 import {
     AppBar,
+    Box,
     Card,
     CardContent,
     CardHeader,
     Dialog,
-    DialogContent,
-    GridList,
     List,
     ListItem,
+    ListItemIcon,
     ListItemText,
     Toolbar,
     Typography
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import SendIcon from '@material-ui/icons/Send';
 import {blue} from "@material-ui/core/colors";
 import {Capability} from "../../data/capability";
 
@@ -68,30 +69,41 @@ export class DetailsDialog extends React.Component<DialogProps, DialogState> {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <DialogContent style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-                overflow: 'hidden'
+            <Box component='div' style={{
+                width: 'auto',
+                height: 'auto',
+                display: 'grid',
+                gridAutoFlow: 'row',
+                gridTemplateRows: 'auto',
+                gridTemplateColumns: 'auto auto auto',
+                padding: '10px',
+                gridGap: '10px',
+                overflow: 'auto'
             }}>
-                <GridList spacing={50} cols={2} style={{width: 'min-content'}}>
-                    {this.state.capabilities?.map((item) => {
-                        return <Card key={item._id.toString()} raised={true} style={{width: 'min-content'}}>
-                            <CardHeader
-                                title={item.name}
-                                subheader={'Capability to ' + item.capability}
-                            />
-                            <CardContent>
-                                <List>
-                                    {item.tracks?.map((track) => {
-                                        return <ListItem><ListItemText primary={track.name}/></ListItem>
-                                    })}
-                                </List>
-                            </CardContent>
-                        </Card>
-                    })}
-                </GridList>
-            </DialogContent>
+                {this.state.capabilities?.map((item) => {
+                    return <Card key={item._id.toString()} raised={true}
+                                 style={{width: 'max-content', height: '200', overflow: 'auto'}}>
+                        <CardHeader
+                            title={item.name}
+                            subheader={'Capability to ' + item.capability}
+                        />
+                        <CardContent style={{height: 'min-content', padding: '5'}}>
+                            <Typography variant="h6" color="inherit">Tracks
+                                ({item.tracks?.length})</Typography>
+                            <List style={{padding: '0'}}>
+                                {item.tracks?.map((track) => {
+                                    return <ListItem style={{padding: '0'}}>
+                                        <ListItemIcon>
+                                            <SendIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText primary={track.name} style={{fontSize: '12', padding: '0'}}/>
+                                    </ListItem>
+                                })}
+                            </List>
+                        </CardContent>
+                    </Card>
+                })}
+            </Box>
         </Dialog>
     }
 
